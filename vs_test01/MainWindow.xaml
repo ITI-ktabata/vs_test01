@@ -12,6 +12,9 @@
             <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="label01" Content="Label" HorizontalAlignment="Left" Margin="23,20,0,0" VerticalAlignment="Top" Height="40" Width="217" FontSize="36"/>
+        <TextBox x:Name="textBox01" HorizontalAlignment="Left" Height="23" Margin="30,102,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185"/>
+        <Label x:Name="label02" Content="" HorizontalAlignment="Left" Margin="20,89,0,0" VerticalAlignment="Top" Height="40" Width="217" FontSize="36" Grid.Column="1"/>
+        <Button x:Name="button01" Content="OK" HorizontalAlignment="Left" Margin="30,161,0,0" VerticalAlignment="Top" Width="75" ClickMode="Press" Click="button01_Click" />
 
     </Grid>
 </Window>
