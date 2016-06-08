@@ -23,6 +23,7 @@ namespace vs_test01
         public MainWindow()
         {
             InitializeComponent();
+            label01.Content = "hogehoge";
         }
     }
 }

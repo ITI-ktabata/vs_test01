@@ -1,2 +1,15 @@
 C:\work_vs\vs_test01\vs_test01\vs_test01\bin\Debug\vs_test01.exe.config
 C:\work_vs\vs_test01\vs_test01\bin\Debug\vs_test01.exe.config
+C:\work_vs\vs_test01\vs_test01\bin\Debug\vs_test01.exe
+C:\work_vs\vs_test01\vs_test01\bin\Debug\vs_test01.pdb
+C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01.csprojResolveAssemblyReference.cache
+C:\work_vs\vs_test01\vs_test01\obj\Debug\MainWindow.g.cs
+C:\work_vs\vs_test01\vs_test01\obj\Debug\App.g.cs
+C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01_MarkupCompile.cache
+C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01_MarkupCompile.lref
+C:\work_vs\vs_test01\vs_test01\obj\Debug\MainWindow.baml
+C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01.g.resources
+C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01.Properties.Resources.resources
+C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01.csproj.GenerateResource.Cache
+C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01.exe
+C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01.pdb
