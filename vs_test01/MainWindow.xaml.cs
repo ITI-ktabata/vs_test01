@@ -28,8 +28,6 @@ namespace vs_test01
 
         private void button01_Click(object sender, RoutedEventArgs e)
         {
-
-            MessageBox.Show("Event handler was created manually.");
             label01.Content = OracleDao.hogehoge();
             label02.Content = textBox01.Text;
         }
