@@ -1,0 +1,2 @@
+C:\work_vs\vs_test01\vs_test01\vs_test01\bin\Debug\vs_test01.exe.config
+C:\work_vs\vs_test01\vs_test01\bin\Debug\vs_test01.exe.config
