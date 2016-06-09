@@ -8,7 +8,7 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace vs_test01
 {
-    class OracleDao
+    public class OracleDao
     {
         public static string hogehoge ()
         {
