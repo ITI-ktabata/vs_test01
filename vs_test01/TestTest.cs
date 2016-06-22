@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace vs_test01
+namespace vs_test01.TestTest
 {
     public class TestTest
     {

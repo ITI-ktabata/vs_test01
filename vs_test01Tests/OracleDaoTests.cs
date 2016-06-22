@@ -9,7 +9,7 @@ namespace vs_test01.Tests
         [TestMethod()]
         public void hogehogeTest()
         {
-            String hoge = OracleDao.hogehoge();
+            String hoge = "";// OracleDao.hogehoge();
             Assert.AreEqual("1000000", hoge, "hogehoge");
         }
     }

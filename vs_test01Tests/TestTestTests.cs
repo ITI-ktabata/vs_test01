@@ -3,6 +3,7 @@ using System;
 
 namespace vs_test01.Tests
 {
+    using vs_test01.TestTest;
     [TestClass()]
     public class TestTestTests
     {
