@@ -5,17 +5,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:vs_test01"
+        xmlns:sys="clr-namespace:vs_test01.Models"
         mc:Ignorable="d"
-        Title="MainWindow" Height="360" Width="1000">
+        Title="MainWindow" Height="669" Width="800">
     <Window.DataContext>
         <vm:MainViewModel />
     </Window.DataContext>
+    <Window.Resources>
+        <!-- CollectionViewSourceで参照出来るようにしておいて -->
+        <ObjectDataProvider x:Key="ModeList" MethodName="GetValues" ObjectType="{x:Type sys:ModeList}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="sys:ModeList" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <!-- CollectionViewSourceで参照出来るようにしておいて -->
+        <ObjectDataProvider x:Key="CheckTypeList" MethodName="GetValues" ObjectType="{x:Type sys:CheckTypeList}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="sys:CheckTypeList" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200*"/>
-            <ColumnDefinition Width="200*"/>
-            <ColumnDefinition Width="200*"/>
-            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="400*"/>
             <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="label01" Content="Label" HorizontalAlignment="Left" Margin="23,20,0,0" VerticalAlignment="Top" Height="40" Width="217" FontSize="36"/>
@@ -31,13 +44,14 @@
                  />
         <ListBox x:Name="listBox02" 
         	HorizontalAlignment="Left" 
-        	Height="147" Margin="10,65,0,0" 
+        	Height="147" Margin="8,228,0,0" 
         	VerticalAlignment="Top" 
         	Width="180"
             ItemsSource="{Binding Path=SchemaList}"
-        	DisplayMemberPath="SchemaName" Grid.Column="1"
+        	DisplayMemberPath="SchemaName"
             SelectedIndex="{Binding GridUserItemSelectIndex, Mode=TwoWay}"
                  />
+        <!--
         <ListBox x:Name="listBox03" 
         	HorizontalAlignment="Left" 
         	Height="147" Margin="10,65,0,0" 
@@ -45,7 +59,7 @@
         	Width="180"
             ItemsSource="{Binding Path=TableList}"
         	DisplayMemberPath="TableName" Grid.Column="2"
-                 />
+                 /> -->
         <ListBox x:Name="listBox04" 
         	HorizontalAlignment="Left" 
         	Height="147" Margin="10,65,0,0" 
@@ -57,12 +71,29 @@
                  />
         <ListBox x:Name="listBox05" 
         	HorizontalAlignment="Left" 
-        	Height="147" Margin="10,65,0,0" 
+        	Height="147" Margin="7,228,0,0" 
         	VerticalAlignment="Top" 
         	Width="180"
             ItemsSource="{Binding Path=TGTSchemaList}"
-        	DisplayMemberPath="SchemaName" Grid.Column="4"
+        	DisplayMemberPath="SchemaName" Grid.Column="2"
                  />
+        <DataGrid x:Name="dataGrid" Grid.Column="1" CanUserAddRows="False"
+                  HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Height="310" Width="380"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding Path=TableList}"
+                  Grid.ColumnSpan="2"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="テーブル名" IsReadOnly="True" 
+                                    Binding="{Binding TableName}" Width="*"/>
+                <DataGridComboBoxColumn Header="チェック対象" Width="80" 
+                                        SelectedValueBinding="{Binding Mode}"
+                                        ItemsSource="{Binding Source={StaticResource ModeList}}"/>
+                <DataGridComboBoxColumn Header="チェックモード" Width="80" 
+                                        SelectedValueBinding="{Binding CheckType}" 
+                                        ItemsSource="{Binding Source={StaticResource CheckTypeList}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

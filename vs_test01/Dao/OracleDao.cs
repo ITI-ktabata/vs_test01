@@ -48,16 +48,10 @@ namespace vs_test01.Dao
         {
             List<SchemaModel> schemas = new List<SchemaModel>();
             using (var Connection = new OracleConnection()){
-                //Data SourceにApp.configの設定を参照することができます。
+
                 Connection.ConnectionString = ConfigurationManager.ConnectionStrings[sid].ConnectionString;
                 Connection.Open();
 
-                //
-                //接続した後はこれまでのODP.NETと同じ操作を行えます。
-                //Managed Driverとの機能差については以下のURLを参照。
-                //http://docs.oracle.com/cd/E57425_01/121/ODPNT/intro004.htm#CEGEJIFD
-                //
-                //ちなみにDapperも使えます。
                 List<dynamic> records = Connection.Query(SqlGetSchemaName).ToList();
                 foreach (dynamic schema in records)
                 {
@@ -66,7 +60,6 @@ namespace vs_test01.Dao
                     schemas.Add(model);
                 }
             }
-            Console.ReadLine();
             return schemas;
         }
 
@@ -75,16 +68,14 @@ namespace vs_test01.Dao
             List<TableModel> tables = new List<TableModel>();
             using (var Connection = new OracleConnection())
             {
-                //Data SourceにApp.configの設定を参照することができます。
                 Connection.ConnectionString = ConfigurationManager.ConnectionStrings[sid].ConnectionString;
                 Connection.Open();
 
                 OracleCommand cmd = new OracleCommand(SqlGetTableName, Connection);
-                cmd.BindByName = true;
-                cmd.Parameters.Add(new OracleParameter(BindStringOwner, OracleDbType.Varchar2, ParameterDirection.Input));
-                cmd.Parameters[BindStringOwner].Value = ownername;
+                cmd.Parameters.Add(new OracleParameter(
+                    BindStringOwner, OracleDbType.Varchar2,
+                    ownername, ParameterDirection.Input));
                 OracleDataReader records = cmd.ExecuteReader();
-                //List<dynamic> records = Connection.Query(SqlGetTableName, ownername).ToList();
                 while ( records.Read() )
                 {
                     TableModel model = new TableModel();
@@ -92,30 +83,7 @@ namespace vs_test01.Dao
                     tables.Add(model);
                 }
             }
-            Console.ReadLine();
             return tables;
-        }
-        public static object hogehoge2()
-        {
-            string str_cnt = "";
-            List<dynamic> hoge;
-            using (var Connection = new OracleConnection())
-            {
-                //Data SourceにApp.configの設定を参照することができます。
-                Connection.ConnectionString = ConfigurationManager.ConnectionStrings["oraattusrc01"].ConnectionString;
-                Connection.Open();
-
-                //
-                //接続した後はこれまでのODP.NETと同じ操作を行えます。
-                //Managed Driverとの機能差については以下のURLを参照。
-                //http://docs.oracle.com/cd/E57425_01/121/ODPNT/intro004.htm#CEGEJIFD
-                //
-                //ちなみにDapperも使えます。
-                hoge = Connection.Query("SELECT GRADE,LOSAL,HISAL cnt FROM salgrade").ToList();
-                str_cnt = ((Decimal)hoge[0].CNT).ToString();
-            }
-            //Console.ReadLine();
-            return hoge;
         }
     }
 }

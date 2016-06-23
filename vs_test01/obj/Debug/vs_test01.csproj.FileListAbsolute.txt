@@ -17,4 +17,3 @@ C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01.csproj.GenerateResource.Cache
 C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01.exe
 C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01.pdb
 C:\work_vs\vs_test01\vs_test01\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\work_vs\vs_test01\vs_test01\obj\Debug\vs_test01.csprojResolveAssemblyReference.cache

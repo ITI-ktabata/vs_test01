@@ -67,6 +67,7 @@
     <Compile Include="Models\GetDBNameModel.cs" />
     <Compile Include="Models\SchemaModel.cs" />
     <Compile Include="Models\TableModel.cs" />
+    <Compile Include="ViewModels\CheckStyleViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Models\DBModel.cs" />
     <Page Include="MainWindow.xaml">

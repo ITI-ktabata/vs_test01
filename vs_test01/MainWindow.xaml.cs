@@ -31,16 +31,16 @@ namespace vs_test01
             //this.DataContext = new MainViewModel();
             this.listBox01.SelectedIndex = -1;
             this.listBox02.SelectedIndex = -1;
-            this.listBox03.SelectedIndex = -1;
+            //this.listBox03.SelectedIndex = -1;
             this.listBox04.SelectedIndex = -1;
             this.listBox05.SelectedIndex = -1;
         }
 
-        private async void button01_Click(object sender, RoutedEventArgs e)
-        {
-            //await Task.Run(() => label02.Content = OracleDao.hogehoge2());
-            //label02.Content = textBox01.Text;
-            
-        }
+        //private async void button01_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //await Task.Run(() => label02.Content = OracleDao.hogehoge2());
+        //    //label02.Content = textBox01.Text;
+        //    
+        //}
     }
 }

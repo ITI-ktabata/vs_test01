@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Windows.Data;
-using System.Windows.Input;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace vs_test01.ViewModels
 {
@@ -18,8 +13,9 @@ namespace vs_test01.ViewModels
         public List<DBModel> DBList { get; set; }
         public List<SchemaModel> SchemaList { get; set; }
         public List<TableModel> TableList { get; set; }
+
         public List<DBModel> TGTDBList { get; set; }
-        public List<SchemaModel> TGTRSchemaList { get; set; }
+        public List<SchemaModel> TGTSchemaList { get; set; }
 
         public MainViewModel()
         {
@@ -45,6 +41,25 @@ namespace vs_test01.ViewModels
                 NotifyPropertyChanged("GridDBItemSelectIndex");
                 NotifyPropertyChanged("SchemaList"); ;
                 NotifyPropertyChanged("TableList");
+            }
+        }
+
+        private int _gridTGTDBItemSelectIndex;
+        public int GridTGTDBItemSelectIndex
+        {
+            get
+            {
+                return _gridTGTDBItemSelectIndex;
+            }
+            set
+            {
+                _gridTGTDBItemSelectIndex = value;
+                if (value >= 0)
+                {
+                    TGTSchemaList = OracleDao.GetUserName(TGTDBList[value].DBName);
+                }
+                NotifyPropertyChanged("GridTGTDBItemSelectIndex");
+                NotifyPropertyChanged("TGTSchemaList"); ;
             }
         }
 
