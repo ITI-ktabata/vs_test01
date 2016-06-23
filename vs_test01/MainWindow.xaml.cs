@@ -26,14 +26,14 @@ namespace vs_test01
         public MainWindow()
         {
             InitializeComponent();
-            object hoge = ConfigurationManager.AppSettings["oraattusrc01"];
-            object hhhhh = ConfigurationManager.ConnectionStrings[1];
-            ConnectionStringSettingsCollection hoge2 = ConfigurationManager.ConnectionStrings;
-
             // バインディング対象のインスタンスを、MainWindowViewModelに設定
             //this.DataContext = new MainWindowViewModel();
-            this.DataContext = new MainViewModel();
+            //this.DataContext = new MainViewModel();
             this.listBox01.SelectedIndex = -1;
+            this.listBox02.SelectedIndex = -1;
+            this.listBox03.SelectedIndex = -1;
+            this.listBox04.SelectedIndex = -1;
+            this.listBox05.SelectedIndex = -1;
         }
 
         private async void button01_Click(object sender, RoutedEventArgs e)
@@ -41,25 +41,6 @@ namespace vs_test01
             //await Task.Run(() => label02.Content = OracleDao.hogehoge2());
             //label02.Content = textBox01.Text;
             
-        }
-    }
-    // MainWindowクラスから完全に独立したクラス（ビューモデル）
-    public sealed class MainWindowViewModel
-    {
-        // バインディングされる値を保持するフィールド
-        private string sampleText_ = "Bound!";
-
-        // バインディング対象のプロパティ
-        public string SampleText
-        {
-            get
-            {
-                return sampleText_;
-            }
-            set
-            {
-                sampleText_ = value;
-            }
         }
     }
 }

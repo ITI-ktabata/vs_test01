@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,13 @@ namespace vs_test01.Dao
                                                                      "'XDB_WEBSERVICES_OVER_HTTP','XDB_WEBSERVICES_WITH_PUBLIC','XDBADMIN', " +
                                                                      "'XS$NULL','PERFSTAT')" +
                                                  "order by 1";
+        private const string BindStringOwner = "OWNER";
+        private const string SqlGetTableName = "select table_name as TABLENAME " +
+                                                " from dba_tables " +
+                                               " where owner = :" + BindStringOwner +
+                                               " order by 1";
 
-        public static List<SchemaModel> hogehoge (string sid)
+        public static List<SchemaModel> GetUserName (string sid)
         {
             List<SchemaModel> schemas = new List<SchemaModel>();
             using (var Connection = new OracleConnection()){
@@ -62,6 +68,32 @@ namespace vs_test01.Dao
             }
             Console.ReadLine();
             return schemas;
+        }
+
+        public static List<TableModel> GetTableName(string sid, string ownername)
+        {
+            List<TableModel> tables = new List<TableModel>();
+            using (var Connection = new OracleConnection())
+            {
+                //Data SourceにApp.configの設定を参照することができます。
+                Connection.ConnectionString = ConfigurationManager.ConnectionStrings[sid].ConnectionString;
+                Connection.Open();
+
+                OracleCommand cmd = new OracleCommand(SqlGetTableName, Connection);
+                cmd.BindByName = true;
+                cmd.Parameters.Add(new OracleParameter(BindStringOwner, OracleDbType.Varchar2, ParameterDirection.Input));
+                cmd.Parameters[BindStringOwner].Value = ownername;
+                OracleDataReader records = cmd.ExecuteReader();
+                //List<dynamic> records = Connection.Query(SqlGetTableName, ownername).ToList();
+                while ( records.Read() )
+                {
+                    TableModel model = new TableModel();
+                    model.TableName = records.GetOracleString(0).ToString();
+                    tables.Add(model);
+                }
+            }
+            Console.ReadLine();
+            return tables;
         }
         public static object hogehoge2()
         {

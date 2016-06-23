@@ -66,9 +66,9 @@
     </ApplicationDefinition>
     <Compile Include="Models\GetDBNameModel.cs" />
     <Compile Include="Models\SchemaModel.cs" />
+    <Compile Include="Models\TableModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Models\DBModel.cs" />
-    <Compile Include="TestTest.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

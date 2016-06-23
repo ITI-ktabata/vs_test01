@@ -17,35 +17,55 @@ namespace vs_test01.ViewModels
     {
         public List<DBModel> DBList { get; set; }
         public List<SchemaModel> SchemaList { get; set; }
+        public List<TableModel> TableList { get; set; }
+        public List<DBModel> TGTDBList { get; set; }
+        public List<SchemaModel> TGTRSchemaList { get; set; }
 
         public MainViewModel()
         {
             this.DBList = GetDBNameModel.getDBName();
+            this.TGTDBList = DBList;
         }
 
-        private int _gridItemSelectIndex;
-        public int GridItemSelectIndex
+        private int _gridDBItemSelectIndex;
+        public int GridDBItemSelectIndex
         {
             get
             {
-                return _gridItemSelectIndex;
+                return _gridDBItemSelectIndex;
             }
             set
             {
-                _gridItemSelectIndex = value;
+                _gridDBItemSelectIndex = value;
                 if (value >= 0)
                 {
-                    SchemaList = OracleDao.hogehoge(DBList[value].DBName);
+                    TableList = new List<TableModel>();
+                    SchemaList = OracleDao.GetUserName(DBList[value].DBName);
                 }
-                NotifyPropertyChanged("GridItemSelectIndex");
-                NotifyPropertyChanged("SchemaList");
+                NotifyPropertyChanged("GridDBItemSelectIndex");
+                NotifyPropertyChanged("SchemaList"); ;
+                NotifyPropertyChanged("TableList");
             }
         }
-        public List<SchemaModel> GridSchemaItem
+
+        private int _gridUserItemSelectIndex;
+        public int GridUserItemSelectIndex
         {
             get
             {
-                return SchemaList;
+                return _gridUserItemSelectIndex;
+            }
+            set
+            {
+                _gridUserItemSelectIndex = value;
+                if (value >= 0)
+                {
+                    TableList = OracleDao.GetTableName(
+                        DBList[_gridDBItemSelectIndex].DBName,
+                        SchemaList[value].SchemaName);
+                }
+                NotifyPropertyChanged("GridUserItemSelectIndex");
+                NotifyPropertyChanged("TableList");
             }
         }
 

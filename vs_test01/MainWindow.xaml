@@ -6,33 +6,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:vs_test01"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="360" Width="1000">
     <Window.DataContext>
         <vm:MainViewModel />
     </Window.DataContext>
     <Grid Margin="0,0,2,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50*"/>
-            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="label01" Content="Label" HorizontalAlignment="Left" Margin="23,20,0,0" VerticalAlignment="Top" Height="40" Width="217" FontSize="36"/>
         <Label x:Name="label02" Content="" HorizontalAlignment="Left" Margin="20,89,0,0" VerticalAlignment="Top" Height="40" Width="217" FontSize="36" Grid.Column="1"/>
         <ListBox x:Name="listBox01" 
-                 HorizontalAlignment="Left" 
-                 Height="147" Margin="23,65,0,0" 
-                 VerticalAlignment="Top" 
-                 Width="217"
-                 ItemsSource="{Binding Path=DBList}"
-                 DisplayMemberPath="DBName"
-                 SelectedIndex="{Binding GridItemSelectIndex, Mode=TwoWay}"
+            HorizontalAlignment="Left" 
+            Height="147" Margin="10,65,0,0" 
+            VerticalAlignment="Top" 
+            Width="180"
+            ItemsSource="{Binding Path=DBList}"
+            DisplayMemberPath="DBName" Grid.Column="0"
+            SelectedIndex="{Binding GridDBItemSelectIndex, Mode=TwoWay}"
                  />
         <ListBox x:Name="listBox02" 
         	HorizontalAlignment="Left" 
-        	Height="147" Margin="20,65,0,0" 
+        	Height="147" Margin="10,65,0,0" 
         	VerticalAlignment="Top" 
-        	Width="217"
+        	Width="180"
             ItemsSource="{Binding Path=SchemaList}"
         	DisplayMemberPath="SchemaName" Grid.Column="1"
+            SelectedIndex="{Binding GridUserItemSelectIndex, Mode=TwoWay}"
+                 />
+        <ListBox x:Name="listBox03" 
+        	HorizontalAlignment="Left" 
+        	Height="147" Margin="10,65,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="180"
+            ItemsSource="{Binding Path=TableList}"
+        	DisplayMemberPath="TableName" Grid.Column="2"
+                 />
+        <ListBox x:Name="listBox04" 
+        	HorizontalAlignment="Left" 
+        	Height="147" Margin="10,65,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="180"
+            ItemsSource="{Binding Path=TGTDBList}"
+        	DisplayMemberPath="DBName" Grid.Column="3"
+            SelectedIndex="{Binding GridTGTDBItemSelectIndex, Mode=TwoWay}"
+                 />
+        <ListBox x:Name="listBox05" 
+        	HorizontalAlignment="Left" 
+        	Height="147" Margin="10,65,0,0" 
+        	VerticalAlignment="Top" 
+        	Width="180"
+            ItemsSource="{Binding Path=TGTSchemaList}"
+        	DisplayMemberPath="SchemaName" Grid.Column="4"
                  />
 
     </Grid>
