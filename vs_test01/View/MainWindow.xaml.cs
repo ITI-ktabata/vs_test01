@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace vs_test01
+namespace vs_test01.View
 {
     using vs_test01.ViewModels;
     /// <summary>
@@ -22,7 +22,7 @@ namespace vs_test01
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        private int val = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -36,11 +36,12 @@ namespace vs_test01
             this.listBox05.SelectedIndex = -1;
         }
 
-        //private async void button01_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //await Task.Run(() => label02.Content = OracleDao.hogehoge2());
-        //    //label02.Content = textBox01.Text;
-        //    
-        //}
+        private void button01_Click(object sender, RoutedEventArgs e)
+        {
+            SubWindow sub = new SubWindow()
+            { DataContext = new SubViewModel() { hoge = "値ですお：" + val} };
+            sub.Show();
+            val++;
+        }
     }
 }
