@@ -43,6 +43,7 @@ namespace vs_test01.Dao
                                                 " from dba_tables " +
                                                " where owner = :" + BindStringOwner +
                                                " order by 1";
+        private const string SqlCountTable   = "select count(1) as COUNT from ";
 
         public static List<SchemaModel> GetUserName (string sid)
         {
@@ -84,6 +85,23 @@ namespace vs_test01.Dao
                 }
             }
             return tables;
+        }
+
+        public static int CountTable(string sid, string ownername, string tablename)
+        {
+            List<TableModel> tables = new List<TableModel>();
+            int cnt;
+            using (var Connection = new OracleConnection())
+            {
+                Connection.ConnectionString = ConfigurationManager.ConnectionStrings[sid].ConnectionString;
+                Connection.Open();
+
+
+                List<dynamic> records = Connection.Query(
+                    SqlCountTable + ownername + "."  + tablename).ToList();
+                cnt = (int)records[0].COUNT;
+            }
+            return cnt;
         }
     }
 }

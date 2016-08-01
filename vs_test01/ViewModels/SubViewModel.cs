@@ -12,6 +12,7 @@ namespace vs_test01.ViewModels
 
         public string DBName { get; set; }
         public string SchemaName { get; set; }
+        public string Count { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String info)
         {

@@ -11,7 +11,8 @@
         <vm:SubViewModel />
     </Window.DataContext>
     <Grid>
-        <Label x:Name="label" Content="{Binding hoge}" HorizontalAlignment="Left" Margin="83,113,0,0" VerticalAlignment="Top" Height="27" Width="115"/>
+        <Label x:Name="label" Content="{Binding DBName}" HorizontalAlignment="Left" Margin="83,113,0,0" VerticalAlignment="Top" Height="27" Width="115"/>
+        <Label x:Name="label2" Content="{Binding Count}" HorizontalAlignment="Left" Margin="83,145,0,0" VerticalAlignment="Top" Height="27" Width="115"/>
 
     </Grid>
 </Window>

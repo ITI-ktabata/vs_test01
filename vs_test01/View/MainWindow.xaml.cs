@@ -17,6 +17,8 @@ using System.Windows.Shapes;
 namespace vs_test01.View
 {
     using vs_test01.ViewModels;
+    using vs_test01.Dao;
+    using vs_test01.Models;
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -38,9 +40,24 @@ namespace vs_test01.View
 
         private void button01_Click(object sender, RoutedEventArgs e)
         {
-            SubWindow sub = new SubWindow()
-            { DataContext = new SubViewModel() { hoge = "値ですお：" + val} };
-            sub.Show();
+            foreach (TableModel model in this.dataGrid.Items)
+            {
+                string cnt = OracleDao.CountTable(
+                    (listBox01.SelectedItem as DBModel).DBName,
+                    (listBox02.SelectedItem as SchemaModel).SchemaName,
+                    model.TableName).ToString();
+                SubWindow sub = new SubWindow()
+                {
+                    DataContext = new SubViewModel()
+                    {
+                        DBName = "テーブル：" + model.TableName,
+                        Count = "件数：" + cnt
+                    }
+                };
+
+                sub.Show();
+
+            }
             val++;
         }
     }
